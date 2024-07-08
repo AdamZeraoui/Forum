@@ -10,7 +10,7 @@ use App\Entity;
 final class User extends Entity{
 
     private $id;
-    private $nickName;
+    private $username;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -34,24 +34,24 @@ final class User extends Entity{
     }
 
     /**
-     * Get the value of nickName
+     * Get the value of username
      */ 
-    public function getNickName(){
-        return $this->nickName;
+    public function getusername(){
+        return $this->username;
     }
 
     /**
-     * Set the value of nickName
+     * Set the value of username
      *
      * @return  self
      */ 
-    public function setNickName($nickName){
-        $this->nickName = $nickName;
+    public function setusername($username){
+        $this->username = $username;
 
         return $this;
     }
 
     public function __toString() {
-        return $this->nickName;
+        return $this->username;
     }
 }
