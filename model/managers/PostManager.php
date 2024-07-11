@@ -5,7 +5,7 @@ namespace Model\Managers;
 use App\Manager;
 use App\DAO;
 
-class UserManager extends Manager{
+class PostManager extends Manager{
 
     // on indique la classe POO et la table correspondante en BDD pour le manager concerné
     protected $className = "Model\Entities\Post";
@@ -15,7 +15,7 @@ class UserManager extends Manager{
         parent::connect();
     }
 
-    public function findPost($id) {
+    public function findPostbyTopic($id) {
 
         $sql = "SELECT * FROM ".$this->tableName." 
         
