@@ -36,7 +36,7 @@ final class User extends Entity{
     /**
      * Get the value of username
      */ 
-    public function getusername(){
+    public function getUsername(){
         return $this->username;
     }
 
@@ -45,7 +45,7 @@ final class User extends Entity{
      *
      * @return  self
      */ 
-    public function setusername($username){
+    public function setUsername($username){
         $this->username = $username;
 
         return $this;

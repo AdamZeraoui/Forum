@@ -40,7 +40,7 @@ final class Category extends Entity{
     /**
      * Get the value of titleCategory
      */ 
-    public function gettitleCategory(){
+    public function getTitleCategory(){
         return $this->titleCategory;
     }
 
@@ -49,7 +49,7 @@ final class Category extends Entity{
      *
      * @return  self
      */ 
-    public function settitleCategory($titleCategory){
+    public function setTitleCategory($titleCategory){
         $this->titleCategory = $titleCategory;
         return $this;
     }

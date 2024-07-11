@@ -74,4 +74,19 @@ final class Topic extends Entity{
     public function __toString(){
         return $this->title;
     }
+
+    /**
+     * Get the value of category
+     */
+    public function getCategory() {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     */
+    public function setCategory($category): self {
+        $this->category = $category;
+        return $this;
+    }
 }
