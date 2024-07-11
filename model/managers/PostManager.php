@@ -14,4 +14,17 @@ class UserManager extends Manager{
     public function __construct(){
         parent::connect();
     }
+
+    public function findPost($id) {
+
+        $sql = "SELECT * FROM ".$this->tableName." 
+        
+        WHERE post.topic_id = :id";
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return  $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+    }
+
 }
