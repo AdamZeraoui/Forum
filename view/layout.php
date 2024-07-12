@@ -19,7 +19,7 @@
                 <header>
                     <nav>
                         <div id="nav-left">
-                            <a href="/AdamZeraoui/Forum/Forum/">Accueil</a>
+                            <a href="/Forum/">Accueil</a>
                             <?php
                             if(App\Session::isAdmin()){
                                 ?>
@@ -40,6 +40,7 @@
                                 <a href="index.php?ctrl=security&action=login">Connexion</a>
                                 <a href="index.php?ctrl=security&action=register">Inscription</a>
                                 <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
+                                <a href="index.php?ctrl=forum&action=showListUsers">Liste des utilisateurs</a>
                             <?php
                             }
                         ?>

@@ -7,6 +7,7 @@
 
 <?php
 foreach($topics as $topic ){ ?>
-    <p><a href="index.php?ctrl=forum&action=showPostByTopic&id=1"><?= $topic ?></a> par <?= $topic->getUser();?> </p>
+    <p><a href="index.php?ctrl=forum&action=showPostsByTopic&id=<?= $topic->getID() ?>"><?= $topic ?></a> 
+    crée par <!-- <a href="index.php?ctrl=forum&action=showDetUsers&id=<?= $topic->getUser()->getId();?>"> --><?= $topic->getUser();?><!-- </a>  --></p>
 <?php } 
 

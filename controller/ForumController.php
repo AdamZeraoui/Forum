@@ -7,6 +7,7 @@ use App\ControllerInterface;
 use Model\Managers\CategoryManager;
 use Model\Managers\TopicManager;
 use Model\Managers\PostManager;
+use Model\Managers\UserManager;
 
 class ForumController extends AbstractController implements ControllerInterface{
 
@@ -44,17 +45,36 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function showPostByTopic($id){
+    public function showPostsByTopic($id){
 
     $postManager = new PostManager();
-    $content = $postManager->findPostByTopic($id);
+    $posts = $postManager->findPostsByTopic($id);
     return [
-        "view" => VIEW_DIR."forum/content.php",
+        "view" => VIEW_DIR."forum/listPostsByTopic.php",
         "meta_description" => "blabla du sujet",
         "data" => [
-            "content" => $content
+            "posts" => $posts,
         ]
     ];
 
+    }
+
+
+
+    public function showListUsers() {
+        
+    
+        $userManager = new UserManager();
+        // récupérer la liste de toutes les users grâce à la méthode findAll de Manager.php (triés par nom)
+        $users = $userManager->findAll(["username", "ASC"]);
+
+        // le controller communique avec la vue "listusers" (view) pour lui envoyer la liste des users (data)
+        return [
+            "view" => VIEW_DIR."forum/listusers.php",
+            "meta_description" => "Liste des users du forum",
+            "data" => [
+                "users" => $users
+            ]
+        ];
     }
 }

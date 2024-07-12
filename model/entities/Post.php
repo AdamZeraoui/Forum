@@ -10,12 +10,12 @@ use App\Entity;
 final class Post extends Entity{
 
     private $id;
-    private $creation_date;
+    private $creationDate;
     private $topic;
     private $user;
     private $content;
 
-    public function construct($data){
+    public function __construct($data){
         $this->hydrate($data);
     }
 
@@ -84,14 +84,14 @@ final class Post extends Entity{
      * Get the value of creation_date
      */
     public function getCreationDate() {
-        return $this->creation_date;
+        return $this->creationDate;
     }
 
     /**
-     * Set the value of creation_date
+     * Set the value of creationDate
      */
-    public function setCreationDate($creation_date): self {
-        $this->creation_date = $creation_date;
+    public function setCreationDate($creationDate): self {
+        $this->creationDate = $creationDate;
         return $this;
     }
 
