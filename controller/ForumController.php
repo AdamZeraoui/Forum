@@ -77,4 +77,18 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+    public function showDetUser($id){
+
+        $userManager = new UserManager();
+        $user = $userManager->findUser($id);
+        return [
+            "view" => VIEW_DIR."forum/detUser.php",
+            "meta_description" => "profil de l'utilisateur",
+            "data" => [
+                "user" => $user
+            ]
+        ];
+
+        }
 }
