@@ -12,7 +12,7 @@ foreach($posts as $post){ ?>
     Signer par <a href="index.php?ctrl=forum&action=showDetUser&id=<?= $post->getUser()->getId();?>"><?= $post->getUser()->getUsername()?></a></br></br>
 
     <a href="#">Editer</a></br>
-    <a href="#">Supprimer</a></br></br></p>
+    <a href="index.php?ctrl=forum&action=delPost&id=<?= $post->getId();?>">Supprimer</a></br></br></p>
 
     
 <?php } ?>

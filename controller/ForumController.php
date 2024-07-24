@@ -90,5 +90,17 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
 
-        }
+    }
+
+    public function delPost($postId){
+        $postManager = new PostManager();
+        $post = $postManager->findOneById($postId);
+        $topicId = $post->getTopic()->getId();
+        $postManager->deletePost($postId);
+        $this->redirectTo("forum", "showPostsByTopic", $topicId);
+        
+    }
+
+    
+
 }
