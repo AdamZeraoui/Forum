@@ -89,8 +89,17 @@ class ForumController extends AbstractController implements ControllerInterface{
                 "user" => $user
             ]
         ];
-
     }
+
+    public function editPost($id) {
+        $postManager = new PostManager();
+        $post = $postManager->findOneById($id);
+        $topicId = $post->getTopic()->getId();
+        $postManager->updatePost($id);
+        $this->redirectTo("forum", "showPostsByTopic", $topicId);
+    }
+
+    
 
     public function delPost($postId){
         $postManager = new PostManager();
