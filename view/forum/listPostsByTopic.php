@@ -16,10 +16,12 @@ foreach($posts as $post){ ?>
 
     
 <?php } ?>
+<form>
+    <label for="newPost">Ecrire un nouveau message :</label><br>
 
-<label for="newPost">Ecrire un nouveau message :</label><br>
 
-<textarea id="newPost" name="newPost" rows="10" cols="50" placeholder=" Nouveau message ici.">
-</textarea><br> <!-- attendre de voir session pour faire fonctionner correcterment -->
+    <textarea id="newPost" name="newPost" rows="10" cols="50" placeholder=" Nouveau message ici."></textarea><br> <!-- attendre de voir session pour faire fonctionner correcterment -->
 
-<a href="#">Envoyer</a>
+    <a href="#">Envoyer</a>
+
+</form>
