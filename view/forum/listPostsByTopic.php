@@ -20,8 +20,8 @@ foreach($posts as $post){ ?>
     <label for="newPost">Ecrire un nouveau message :</label><br>
 
 
-    <textarea id="newPost" name="newPost" rows="10" cols="50" placeholder=" Nouveau message ici."></textarea><br> <!-- attendre de voir session pour faire fonctionner correcterment -->
+    <input type="text" id="newPost" name="newPost" placeholder=" Nouveau message ici."></textarea><br><br> <!-- attendre de voir session pour faire fonctionner correcterment -->
 
-    <a href="#">Envoyer</a>
+    <a href="#"><input type="submit" value="Envoyer" /></a>
 
 </form>
