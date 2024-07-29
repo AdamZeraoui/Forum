@@ -1,6 +1,5 @@
 <?php
     $posts = $result["data"]['posts']; 
-
 ?>
 
 <h1>Liste des postes</h1>
@@ -11,17 +10,17 @@ foreach($posts as $post){ ?>
     <p><?= $post->getContent()?></br>
     Signer par <a href="index.php?ctrl=forum&action=showDetUser&id=<?= $post->getUser()->getId();?>"><?= $post->getUser()->getUsername()?></a></br></br>
 
-    <a href="#">Editer</a></br>
+    <a href="index.php?ctrl=forum&action=showEditPost&id=<?= $post->getId();?>">Editer</a></br>
     <a href="index.php?ctrl=forum&action=delPost&id=<?= $post->getId();?>">Supprimer</a></br></br></p>
 
     
 <?php } ?>
-<form>
-    <label for="newPost">Ecrire un nouveau message :</label><br>
+<form action="index.php?ctrl=forum&action=addNewPost" method="post">
+    <label for="newPost">Ecrire le nouveau message :</label><br>
 
+    <textarea id="newPost" name="content" placeholder=" Nouveau message ici." cols="40" rows="10"></textarea><br><br>
 
-    <input type="text" id="newPost" name="newPost" placeholder=" Nouveau message ici."></textarea><br><br> <!-- attendre de voir session pour faire fonctionner correcterment -->
-
-    <a href="#"><input type="submit" value="Envoyer" /></a>
+    <input type="submit" name="submit" value="Envoyer" />
+    </br></br>
 
 </form>

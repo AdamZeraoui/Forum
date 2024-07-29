@@ -48,12 +48,15 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function showPostsByTopic($id){
 
     $postManager = new PostManager();
+    $userManager = new UserManager();
+    $users = $userManager->findAll();
     $posts = $postManager->findPostsByTopic($id);
     return [
         "view" => VIEW_DIR."forum/listPostsByTopic.php",
         "meta_description" => "blabla du sujet",
         "data" => [
             "posts" => $posts,
+            "users" => $users
         ]
     ];
 
@@ -70,7 +73,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         // le controller communique avec la vue "listusers" (view) pour lui envoyer la liste des users (data)
         return [
-            "view" => VIEW_DIR."forum/listusers.php",
+            "view" => VIEW_DIR."forum/listUsers.php",
             "meta_description" => "Liste des users du forum",
             "data" => [
                 "users" => $users
@@ -90,17 +93,9 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
-
-    public function editPost($id) {
-        $postManager = new PostManager();
-        $post = $postManager->findOneById($id);
-        $topicId = $post->getTopic()->getId();
-        $postManager->updatePost($id);
-        $this->redirectTo("forum", "showPostsByTopic", $topicId);
-    }
-
     
-
+    
+    
     public function delPost($postId){
         $postManager = new PostManager();
         $post = $postManager->findOneById($postId);
@@ -108,8 +103,60 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager->deletePost($postId);
         $this->redirectTo("forum", "showPostsByTopic", $topicId);
         
+        
+    }
+    
+    public function addNewPost(){
+        
+        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        $postManager = new PostManager();
+        if(isset($_POST["submit"]))   {
+            
+            $postManager->add([
+                "topic_id" => 1,
+                "user_id" => 1,
+                "content" => $content
+            ]);
+            $this->redirectTo("forum", "showPostsByTopic", 1);
+        }
+        
+        
+    }  
+
+    public function editPost($id) {
+
+        $postManager = new PostManager();
+        $post = $postManager->findOneById($id);
+        $topicId = $post->getTopic()->getId();
+
+        
+        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        if(isset($_POST["submit"]))   {
+            $postManager->updatePost(
+                $id,
+                $content
+            );
+            $this->redirectTo("forum", "showPostsByTopic", $topicId);
+
+        }
     }
 
-    
+    public function showEditPost($id){
+
+        $postManager = new PostManager;
+        $post = $postManager->findOneById($id);
+        return [
+            "view" => VIEW_DIR."forum/editPost.php",
+            "meta_description" => "page d'edition",
+            "data" => [
+            "post" => $post
+            ]
+        ];
+
+
+    }
+
 
 }

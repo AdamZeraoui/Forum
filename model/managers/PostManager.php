@@ -48,15 +48,15 @@ class PostManager extends Manager{
 
     }
 
-    public function updatePost($postId){
+    public function updatePost($postId,$content){
 
-        $sql = "UPDATE". $this->tableName."
+        $sql = "UPDATE ". $this->tableName."
         SET content=:content
         WHERE post.id_post = :postId";
         
-        DAO::insert($sql, [
+        DAO::update($sql, [
             "postId" => $postId,
-            "content" => "aaa"
+            "content" => $content
         ]);
     }
 
